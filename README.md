@@ -6,13 +6,22 @@
 
 open in vsccode
 
-create env
+...create env
 
 cd path\to\your\project\folder
 
 python -m venv myenv
 
 myenv\Scripts\activate
+
+download the required packages
+
+open terminal 
+
+now run python app.py 
+
+
+your flask app  is now ready 
 
 
 
