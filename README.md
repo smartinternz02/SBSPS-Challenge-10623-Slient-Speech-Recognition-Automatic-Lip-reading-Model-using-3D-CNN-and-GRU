@@ -28,6 +28,6 @@ Run the Flask App: Open a terminal in VSCode and run the Flask app
 ```bash
     python app.py
 ```
-
+Access the App: Open your web browser and go to http://localhost:5000 to access the running Flask app.
 
 
