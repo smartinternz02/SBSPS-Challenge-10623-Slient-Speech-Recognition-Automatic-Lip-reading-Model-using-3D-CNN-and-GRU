@@ -1,0 +1,9 @@
+venv/
+.vscode/
+*.log
+*.so
+*.dll
+*.pyd
+*.env
+tensorflow/
+imageio/

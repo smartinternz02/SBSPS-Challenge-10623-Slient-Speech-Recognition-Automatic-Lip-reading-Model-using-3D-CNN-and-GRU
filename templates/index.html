@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LipNet Full Stack App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 20px auto;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .processed-section {
+            margin-top: 30px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .decoded-text {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        .navbar {
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        .access-status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .access-granted {
+            color: green;
+        }
+
+        .access-denied {
+            color: red;
+        }
+        .popup-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 300px;
+            z-index: 200;
+            display: none;
+        }
+        #login-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        #login-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the process video button */
+        .card form input[type="submit"] {
+            background-color: #88075d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .card form input[type="submit"]:hover {
+            background-color: #007c34;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        IBM Project
+    </div>
+    <div class="card">
+        <h1>LIP Reading Model</h1>
+        <form action="/index" method="post" enctype="multipart/form-data">
+            <input type="file" name="video">
+            <input type="submit" value="Process Video">
+        </form>
+
+        <div class="processed-section">
+            <h2>Decoded Text Prediction:</h2>
+            <p class="decoded-text">{{ decoded_text }}</p>
+        </div>
+
+        <button id="login-button">Login</button>
+    </div>
+
+    
+
+    <div class="popup-card" id="popup-card">
+        <h2>Access Status</h2>
+        <div class="access-status" id="popup-access-status"></div>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById('login-button');
+        const popupCard = document.getElementById('popup-card');
+        const popupAccessStatus = document.getElementById('popup-access-status');
+        const decodedText = "{{ decoded_text }}"; // Decoded text from the Flask template
+        function s(){
+            window.location.href = "/new";
+            popupAccessStatus.textContent = "Access Granted";
+            popupAccessStatus.classList.add('access-granted');
+            popupAccessStatus.classList.remove('access-denied');
+        };
+        function n()
+        {
+            window.location.href = "/new2";
+            popupAccessStatus.textContent = "Access Denied";
+                popupAccessStatus.classList.add('access-denied');
+                popupAccessStatus.classList.remove('access-granted');
+        };
+        loginButton.addEventListener('click', () => {
+            if (decodedText === "bin blue at f two now") {
+                s();
+                
+            } else {
+                n();
+                
+            }
+            popupCard.style.display = 'block';
+        });
+
+        // Close the popup when clicked outside the content
+        window.addEventListener('click', (event) => {
+            if (event.target === popupCard) {
+                popupCard.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
