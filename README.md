@@ -6,7 +6,7 @@
 
 open in vsccode
 
-...create env
+create env
 
 cd path\to\your\project\folder
 
