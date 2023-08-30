@@ -1,27 +1,33 @@
 
 # SBSPS-Challenge-10623-Slient-Speech-Recognition-Automatic-Lip-reading-Model-using-3D-CNN-and-GRU
 
-1.download as a zip file
 
+## Installation
 
-open in vsccode
+Install our-project 
 
-create env
+```bash
+  git clone https://github.com/your-username/repo-name.git
+  
+```
+Navigate to the path
+```bash
+    cd path\to\your\project\folder
+```
+Create a virtual environment named myenv:
+```bash
+    python -m venv myenv
+```
+Activate Virtual Environment: Activate the virtual environment:
+```bash
+    myenv\Scripts\activate
+```
+Download tensorflow,opencv-python,imageio,numpy,flask
 
-cd path\to\your\project\folder
-
-python -m venv myenv
-
-myenv\Scripts\activate
-
-download the required packages
-
-open terminal 
-
-now run python app.py 
-
-
-your flask app  is now ready 
+Run the Flask App: Open a terminal in VSCode and run the Flask app
+```bash
+    python app.py
+```
 
 
 
